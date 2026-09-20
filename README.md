@@ -1,5 +1,8 @@
 # 象棋陪練（Chinese Chess Coach）
 
+> **「這是我在自學中國象棋過程中，借助 AI 協同開發打造的智慧陪練與學習工具。」**  
+> *"An interactive Xiangqi sparring and coaching system built during my journey of learning Chinese Chess, crafted with AI pair-programming."*
+
 [繁體中文](#繁體中文) | [English](#english)
 
 ---
@@ -7,7 +10,19 @@
 <a name="繁體中文"></a>
 ## 繁體中文
 
-這是一個在瀏覽器使用的象棋學習與陪練系統。你可以選擇「**大師帶走**」，每回合先看電腦對手這一步的用意，再看我方建議與後續推演；也可以選擇「**自主練習**」，自己先走，出現明顯失誤時再查看分層提示。所有的對局、答題、錯題與練習結果均保存在本機 SQLite 資料庫中。
+### 💡 專案背景與初衷
+
+這款程式源自於我自己學習中國象棋的實際需求。
+
+在學棋過程中，傳統象棋軟體往往只有冷冰冰的下棋介面與難以理解的局面評分，初學者很難看出「電腦這步棋到底想做什麼」、「為什麼我這步是壞棋」。
+
+為了能更深入、更主動地學習，我運用 AI 工具與現代 Web 技術，為自己量身打造了這個具備**陪練教練（Coach）**思維的學習系統：
+- **引導思考**：電腦走完不會直接亮答案，而是先考考我「對手這步在打什麼算盤？」（將軍、吃子/捉子、還是走位？）。
+- **推演比較**：我想走某一步棋時，能先在棋盤上跟大師推薦進行分支推演比較，弄清楚兩者的後續差距。
+- **失誤引導**：走漏棋時不直接打擊信心，而是給予分層提示，引導我自己找出破綻。
+- **錯題強化**：所有失誤局面自動收錄成錯題庫，讓我能針對弱點反覆練習。
+
+這不僅是我個人的學棋夥伴，也希望能幫助更多想入門與精進象棋的同好！
 
 ### 核心功能
 
@@ -94,7 +109,19 @@ python -m unittest discover -s tests -v
 <a name="english"></a>
 ## English
 
-**Chinese Chess Coach** is an interactive web-based Xiangqi (象棋, Chinese Chess) training system powered by a local UCCI engine (ElephantEye). Designed for players looking to sharpen their tactical intuition, it features real-time move guidance, opponent intent quizzes, layered blunder coaching, and variation comparisons.
+### 💡 Project Story & Motivation
+
+This project was born out of my personal journey learning **Xiangqi (Chinese Chess)**.
+
+When practicing against traditional chess software, beginners often encounter sterile interfaces and cryptic evaluation scores. It is often frustratingly hard to understand *why* the opponent played a certain move, or *where* our tactical thinking broke down.
+
+To make learning more interactive and intuitive, I leveraged AI pair-programming tools and modern web tech to build a dedicated **Xiangqi Sparring Coach**:
+- **Active Thinking**: Instead of passively receiving moves, the coach asks interactive questions after each opponent move—encouraging me to decode the opponent's tactical intention (checking, capturing/threatening, or positional adjusting).
+- **Plan Comparison**: When I have a move idea in mind, I can compare my planned continuation against the engine's line on an interactive secondary board to understand the tactical differences.
+- **Layered Coaching**: Blunders are treated as learning opportunities. The system offers progressive hints rather than spoiling the solution right away.
+- **Mistake Bank**: Failed positions and tactical blunders are automatically cataloged into a mistake bank for deliberate spaced repetition.
+
+It is both my personal chess learning companion and an open-source tool for anyone looking to learn Xiangqi with an interactive AI coach.
 
 ### Key Features
 
