@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}學習概況 · 象棋陪練{% endblock %}
+{% block content %}
+<div class="page-title-row"><div><p class="eyebrow">看見自己的進步</p><h1>學習概況</h1></div><a class="text-link" href="{{ url_for('pages.practice') }}">練習錯題 ↗</a></div>
+<div class="progress-grid"><div class="panel metric-card"><span>已開始對局</span><strong>{{ progress.games }}</strong><small>慢慢下，重點是看懂每一步。</small></div><div class="panel metric-card"><span>收錄錯題</span><strong>{{ progress.mistakes }}</strong><small>錯題是下一次進步的起點。</small></div><div class="panel metric-card"><span>複習答對</span><strong>{{ progress.successes }}<small> / {{ progress.attempts }}</small></strong><small>先自己作答，再回頭看提示。</small></div></div>
+<section class="panel themes-panel"><p class="eyebrow">常見失誤</p><h2>最近值得練習的主題</h2>{% if progress.themes %}<div class="theme-list">{% for item in progress.themes %}<div><span>{{ item.theme }}</span><strong>{{ item.count }} 次</strong></div>{% endfor %}</div>{% else %}<p class="muted">下幾盤棋後，這裡會整理你常遇到的問題。</p>{% endif %}</section>
+{% endblock %}

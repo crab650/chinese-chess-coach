@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}象棋陪練{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('pages.home') }}"><span class="brand-mark">象</span><span>象棋陪練<small>一步一步，越下越明白</small></span></a>
+    <nav class="main-nav" aria-label="主選單">
+      <a href="{{ url_for('pages.home') }}" class="{{ 'active' if request.endpoint == 'pages.home' else '' }}">首頁</a>
+      <a href="{{ url_for('pages.practice') }}" class="{{ 'active' if request.endpoint in ('pages.practice', 'pages.practice_detail') else '' }}">我的錯題</a>
+      <a href="{{ url_for('pages.review') }}" class="{{ 'active' if request.endpoint in ('pages.review', 'pages.review_game') else '' }}">對局紀錄</a>
+      <a href="{{ url_for('pages.progress') }}" class="{{ 'active' if request.endpoint == 'pages.progress' else '' }}">學習概況</a>
+    </nav>
+  </header>
+  <main class="page-shell">{% block content %}{% endblock %}</main>
+  <footer class="site-footer">象棋陪練 · 本機版</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

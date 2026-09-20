@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}開始學棋 · 象棋陪練{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">你的象棋練習夥伴</p>
+    <h1>下一步，<br><em>下得更明白。</em></h1>
+    <p class="lede">自己先走，教練在關鍵時刻提醒你。看懂一次失誤，再把同樣的局面練到會。</p>
+    {% if active_game_id %}<a class="button button-primary" href="{{ url_for('pages.play', game_id=active_game_id) }}">繼續上次對局 <span aria-hidden="true">↗</span></a>{% endif %}
+  </div>
+  <div class="hero-card" aria-hidden="true"><span>將</span><span>帥</span><p>看一步<br>想三步</p></div>
+</section>
+
+<div class="home-grid">
+  <section class="panel new-game-panel">
+    <div class="panel-heading"><span class="section-number">01</span><div><p class="eyebrow">陪練對局</p><h2>開始一盤新棋</h2></div></div>
+    <p class="muted">先從入門難度開始。走得不理想時，可以看提示再重走。</p>
+    <form id="newGameForm" data-api="{{ url_for('api.create_game') }}" data-play-template="{{ url_for('pages.play', game_id=0) }}">
+      <label for="humanSide">我執</label>
+      <select id="humanSide" name="human_side"><option value="w">紅方 · 先走</option><option value="b">黑方 · 後走</option></select>
+      <label for="level">對手難度</label>
+      <select id="level" name="level"><option value="beginner">入門</option><option value="normal">普通</option><option value="challenge">挑戰</option></select>
+      <div class="mode-choice"><label for="coachMode">練習方式</label><select id="coachMode" name="coach_mode"><option value="guided">大師帶走 · 每回合先看建議</option><option value="independent">自主練習 · 失誤時提醒</option></select></div>
+      <button class="button button-primary button-wide" type="submit">開始陪練 <span aria-hidden="true">→</span></button>
+      <p id="formError" class="form-error" role="alert" hidden></p>
+    </form>
+  </section>
+  <section class="panel journey-panel">
+    <div class="panel-heading"><span class="section-number">02</span><div><p class="eyebrow">我的練習</p><h2>每一步都算數</h2></div></div>
+    <div class="stat-row"><div><strong>{{ progress.games }}</strong><span>已開始對局</span></div><div><strong>{{ progress.mistakes }}</strong><span>收錄錯題</span></div><div><strong>{{ progress.successes }}</strong><span>複習答對</span></div></div>
+    <div class="journey-links"><a href="{{ url_for('pages.practice') }}">重練我的錯題 <span>↗</span></a><a href="{{ url_for('pages.review') }}">回看對局紀錄 <span>↗</span></a></div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/home.js') }}" defer></script>{% endblock %}

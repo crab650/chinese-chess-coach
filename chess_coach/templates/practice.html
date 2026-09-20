@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}我的錯題 · 象棋陪練{% endblock %}
+{% block content %}
+<div class="page-title-row"><div><p class="eyebrow">自己的失誤，最好的練習題</p><h1>我的錯題</h1></div><a class="text-link" href="{{ url_for('pages.home') }}">開始陪練 ↗</a></div>
+<section class="panel list-panel">
+{% if mistakes %}<div class="record-list">{% for mistake in mistakes %}<a class="record-item" href="{{ url_for('pages.practice_detail', mistake_id=mistake.id) }}"><span class="record-icon">{{ mistake.id }}</span><span><strong>{{ mistake.theme }} · 第 {{ mistake.game_id }} 局第 {{ mistake.ply }} 步</strong><small>重練 {{ mistake.attempts }} 次 · 答對 {{ mistake.successes }} 次</small></span><span class="record-arrow">↗</span></a>{% endfor %}</div>
+{% else %}<div class="empty-panel"><span>思</span><h2>目前沒有錯題</h2><p>陪練時遇到值得回看的走法，就會收錄在這裡。</p><a class="button button-primary" href="{{ url_for('pages.home') }}">開始陪練</a></div>{% endif %}
+</section>
+{% endblock %}

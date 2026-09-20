@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}錯題練習 · 象棋陪練{% endblock %}
+{% block content %}
+<div class="page-title-row"><div><p class="eyebrow">錯題重練 · 第 {{ mistake_id }} 題</p><h1>這一步，你會怎麼走？</h1></div><a class="text-link" href="{{ url_for('pages.practice') }}">所有錯題 ↗</a></div>
+<div class="play-layout" id="practiceApp" data-mistake-api="{{ url_for('api.get_mistake', mistake_id=mistake_id) }}" data-answer-api="{{ url_for('api.answer_mistake', mistake_id=mistake_id) }}"><section class="board-card"><div class="board-topline"><span id="practiceStatus">請自己先想一步</span><span class="tiny">點選棋子，再點選目的地</span></div><div class="board-wrap"><svg id="chessBoard" class="chess-board" viewBox="0 0 540 600" role="img" aria-label="錯題局面"></svg></div></section><aside class="coach-column"><section class="panel coach-panel"><p class="eyebrow">重練一個關鍵局面</p><h2 id="practiceTitle">先自己找走法</h2><p id="practiceText" class="coach-text">想想對方有什麼威脅，再選一個你認為更穩妥的走法。</p><p id="practiceError" class="form-error" role="alert" hidden></p><a class="text-link" href="{{ url_for('pages.practice') }}">返回錯題列表 ↗</a></section></aside></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/board.js') }}" defer></script><script src="{{ url_for('static', filename='js/practice.js') }}" defer></script>{% endblock %}

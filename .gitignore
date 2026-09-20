@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+instance/
+chess_coach/instance/
+*.db
+*.sqlite
+*.sqlite3
+*.pdb
+build/
+references/
+WEBSITE_DESIGN_AND_PYTHONANYWHERE_GUIDE.md
+.vscode/
+.idea/

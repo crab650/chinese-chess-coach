@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}複盤第 {{ game.id }} 局 · 象棋陪練{% endblock %}
+{% block content %}
+<div class="page-title-row"><div><p class="eyebrow">第 {{ game.id }} 局 · 複盤</p><h1>再看一次關鍵選擇。</h1></div><a class="text-link" href="{{ url_for('pages.review') }}">所有對局 ↗</a></div>
+<div class="play-layout" id="reviewApp" data-game='{{ game|tojson }}' data-mistakes='{{ mistakes|tojson }}'>
+  <section class="board-card"><div class="board-topline"><span id="reviewPosition">開局</span><span class="tiny">依序回看每一步</span></div><div class="board-wrap"><svg id="chessBoard" class="chess-board" viewBox="0 0 540 600" role="img" aria-label="複盤棋盤"></svg></div><div class="review-controls"><button id="firstMove" class="button button-ghost" type="button">⟲ 開局</button><button id="prevMove" class="button button-secondary" type="button">← 上一步</button><button id="nextMove" class="button button-primary" type="button">下一步 →</button></div></section>
+  <aside class="coach-column"><section class="panel"><p class="eyebrow">棋步說明</p><h2 id="reviewMoveTitle">開局局面</h2><p id="reviewMoveText" class="coach-text">按「下一步」開始複盤。</p><a class="text-link" href="{{ url_for('pages.practice') }}">練習我的錯題 ↗</a></section><section class="panel"><p class="eyebrow">全部棋步</p><ol id="moveList" class="move-list"></ol></section></aside>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/board.js') }}" defer></script><script src="{{ url_for('static', filename='js/review.js') }}" defer></script>{% endblock %}
